@@ -43,10 +43,11 @@
                     name="product_id"
                     value="<?php echo $product['id']; ?>"
                 />
+                <?php if (isUserLoggedIn()) : ?>
                 <div class="text-center">
                     <button class="btn btn-primary">Add to cart</button>
                 </div>
-
+                <?php endif; ?>
                 <div class="text-center">
                     <a href="/" class="btn btn-link btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
                 </div>

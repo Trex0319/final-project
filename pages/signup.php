@@ -7,7 +7,7 @@
       <h1 class="h1 mb-4 text-center text-white">Sign Up a New Account</h1>
       <div class="card p-4">      
         <?php require "parts/errorbox.php"; ?>
-        <form method="POST" action="auth/signup">
+        <form method="POST" action="/auth/signup">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" />

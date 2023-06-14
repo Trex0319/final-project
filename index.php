@@ -22,20 +22,48 @@
             case 'auth/signup':
                 require "includes/auth/signup.php";
                 break;
-            case 'product_add': //condition
+            case 'product_add': 
                 require "includes/product/product_add.php";
                 break;
-            case 'dashboard': //condition
+            case 'product_edit': 
+                require "includes/product/product_edit.php";
+                break;
+            case 'dashboard': 
                 require "pages/dashboard.php";
                 break;
-            case 'manage-product': //condition
+            case 'manage-product': 
                 require "pages/product/manage-product.php";
                 break;
-            case 'manage-product-add': //condition
+            case 'manage-product-add': 
                 require "pages/product/manage-product-add.php";
                 break;
-            case 'manage-product-edit': //condition
+            case 'manage-product-edit': 
                 require "pages/product/manage-product-edit.php";
+                break;
+            case 'manage-users': 
+                require "pages/users/manage-users.php";
+                break;
+            case 'manage-users-add': 
+                $_SESSION["title"] = "Add New User";
+                require "pages/users/manage-users-add.php";
+                break;
+            case "user_add":
+                require "includes/users/user_add.php";
+                break;
+            case "user_edit":
+                require "includes/users/user_edit.php";
+                break;
+            case "user_changepwd":
+                require "includes/users/user_changepwd.php";
+                break;
+            case "user_delete":
+                require "includes/users/user_delete.php";
+                break;
+            case 'manage-users-changepwd': 
+                require "pages/users/manage-users-changepwd.php";
+                break;
+            case 'manage-users-edit': 
+                require "pages/users/manage-users-edit.php";
                 break;
             case 'login':
                 require "pages/login.php";
@@ -43,7 +71,7 @@
             case 'signup':
                 require "pages/signup.php";
                 break;
-            case 'logout': //condition
+            case 'logout': 
                 require "pages/logout.php";
                 break;
             case 'product':

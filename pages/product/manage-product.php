@@ -17,7 +17,7 @@ $database = connectToDB();
       $query = $database->prepare($sql);
       $query->execute(
       [
-          'id' => $_SESSION["id"]
+          'id' => $_SESSION["user"]["id"]
       ]
       );
     }
@@ -28,10 +28,10 @@ $database = connectToDB();
 
     <div class="container mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1 class="h1">Manage Posts</h1>
+        <h1 class="h1">Manage Products</h1>
         <div class="text-end">
           <a href="/manage-product-add" class="btn btn-primary btn-sm"
-            >Add New Post</a
+            >Add New Product</a
           >
         </div>
       </div>
@@ -94,7 +94,7 @@ $database = connectToDB();
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to delete this post: <?= $product['name']; ?>?</h1>
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to delete this product: <?= $product['name']; ?>?</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-start">
@@ -102,12 +102,6 @@ $database = connectToDB();
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                          <!-- 
-                            Delete Form 
-                            1. add action
-                            2. add method
-                            3. add input hidden field for id
-                          -->
                           <form method= "POST" action="/users/post_delete">
                             <input type="hidden" name="id" value= "<?= $product['id']; ?>" />
                             <button type="submit" class="btn btn-danger">Yes</button>

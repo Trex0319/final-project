@@ -21,13 +21,13 @@
     </form>      
     <!-- <a href="/login" class="nav-link ">Login</a>
     <a href="/signup" class="nav-link " >Sign Up</a> -->
-    <?php if ( isUserLoggedIn() ) { ?>
+    <?php if (isUserLoggedIn()) { ?>
       <a href="/logout" class="btn btn-outline-dark me-2">Logout</a>
       <a href="/dashboard" class="btn btn-outline-dark me-2">dashboard</a>
       <?php } else { ?>
         <a href="/login" class="btn btn-outline-dark me-2">Login</a>
         <a href="/signup" class="btn btn-outline-dark me-2">Sign Up</a>
-      <?php } ?>
+        <?php } ?>
   </div>
 </nav>
 
@@ -62,7 +62,7 @@
                         name="product_id"
                         value="<?php echo $product['id']; ?>"
                     />
-                    <?php if (ofEditorAndAdmin()) : ?>
+                    <?php if (isUserLoggedIn()) : ?>
                     <button class="btn btn-primary">Add to cart</button>
                     <?php endif; ?>
                     <a href="/product?id=<?php echo $product['id']; ?>" class="btn bg-info rounded-2">Details</a>

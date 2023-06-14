@@ -9,7 +9,7 @@
     ?>
     <div class="container mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1 class="h1">Add New Post</h1>
+        <h1 class="h1">Add New Product</h1>
       </div>
       <div class="card mb-2 p-4">
       <form
@@ -18,8 +18,8 @@
           >
           <?php require "parts/errorbox.php";?>          
           <div class="mb-3">
-            <label for="post-title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="post-title" name="name"/>
+            <label for="product-name" class="form-label">Title</label>
+            <input type="text" class="form-control" id="product-name" name="name"/>
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Price</label>
@@ -41,7 +41,7 @@
       </div>
       <div class="text-center">
         <a href="manage-posts" class="btn btn-link btn-sm"
-          ><i class="bi bi-arrow-left"></i> Back to Posts</a
+          ><i class="bi bi-arrow-left"></i> Back to Product</a
         >
       </div>
     </div>
