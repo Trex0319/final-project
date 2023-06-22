@@ -13,11 +13,11 @@ $database = connectToDB();
       $query = $database->prepare($sql);
       $query->execute();
     } else {
-      $sql = "SELECT * FROM products where id = :id";
+      $sql = "SELECT * FROM products where user_id = :user_id";
       $query = $database->prepare($sql);
       $query->execute(
       [
-          'id' => $_SESSION["user"]["id"]
+          'user_id' => $_SESSION["user"]["id"]
       ]
       );
     }
@@ -28,7 +28,7 @@ $database = connectToDB();
 
     <div class="container mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1 class="h1">Manage Products</h1>
+        <h1 class="h1 text-white">Manage Products</h1>
         <div class="text-end">
           <a href="/manage-product-add" class="btn btn-primary btn-sm"
             >Add New Product</a
@@ -66,7 +66,7 @@ $database = connectToDB();
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post?id=<?= $product['id']; ?>"
+                    href="product?id=<?= $product['id']; ?>"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2 
                     <?php
@@ -102,7 +102,7 @@ $database = connectToDB();
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                          <form method= "POST" action="/users/post_delete">
+                          <form method= "POST" action="/product_delete">
                             <input type="hidden" name="id" value= "<?= $product['id']; ?>" />
                             <button type="submit" class="btn btn-danger">Yes</button>
                           </form>
@@ -116,11 +116,11 @@ $database = connectToDB();
             <?php endforeach ?>
           </tbody>
         </table>
-      </div>
-      <div class="text-center">
+        <div class="text-center">
         <a href="dashboard" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back to Dashboard</a
         >
+      </div>
       </div>
     </div>
 

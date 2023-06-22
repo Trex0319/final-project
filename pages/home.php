@@ -1,33 +1,37 @@
 <?php
 
+  $keyword = isset( $_GET["keyword"] ) ? $_GET["keyword"] : "";
+
   $database = connectToDB();
 
-  $sql = "SELECT * FROM products";
+  $sql = "SELECT * FROM products WHERE status = 'publish' AND name like '%$keyword%' ORDER BY id DESC";
   $query = $database->prepare($sql);
   $query->execute();
   $products = $query->fetchAll();
 
-    require 'parts/header.php';
+  require 'parts/header.php';
 
 ?>
 
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
+    <a class="navbar-brand">Pobular</a>
+    <form 
+        action=""
+        method="GET"
+        class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" name="keyword" value="<?= $keyword; ?>">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <!-- <button class="btn btn-outline-dark me-2" type="submit">Login</button> -->
-      <!-- <button class="btn btn-outline-dark me-2" type="submit">Sign Up</button> -->
+        <?php if (isUserLoggedIn()) { ?>
+        <a href="/logout" class="btn btn-outline-dark me-2">Logout</a>
+        <a href="/dashboard" class="btn btn-outline-dark me-2">dashboard</a>
+        <?php } else { ?>
+          <a href="/login" class="btn btn-outline-dark me-2">Login</a>
+          <a href="/signup" class="btn btn-outline-dark me-2">Sign Up</a>
+          <?php } ?>
     </form>      
-    <!-- <a href="/login" class="nav-link ">Login</a>
-    <a href="/signup" class="nav-link " >Sign Up</a> -->
-    <?php if (isUserLoggedIn()) { ?>
-      <a href="/logout" class="btn btn-outline-dark me-2">Logout</a>
-      <a href="/dashboard" class="btn btn-outline-dark me-2">dashboard</a>
-      <?php } else { ?>
-        <a href="/login" class="btn btn-outline-dark me-2">Login</a>
-        <a href="/signup" class="btn btn-outline-dark me-2">Sign Up</a>
-        <?php } ?>
   </div>
 </nav>
 
@@ -46,8 +50,9 @@
             <div class="col">
                 <div class="card h-100">
                 <img
-                    src=<?php echo $product['image_url']; ?>
+                    src="uploads/<?php echo $product['image']; ?>"
                     class="card-img-top"
+                    style="height:280px;"
                     alt="Product 1"
                 />
                 <div class="card-body text-center">
@@ -55,7 +60,7 @@
                     <p class="card-text">US$<?php echo $product['price']; ?></p>
                     <form
                     method="POST"
-                    action="/cart"
+                    action="/cart_add"
                     >
                     <input
                         type="hidden"
@@ -73,11 +78,6 @@
             <?php endforeach; ?>
             </div>
             </div>
-            <!-- <div class="d-flex justify-content-between align-items-center pt-4 pb-2">
-            <div class="text-muted small">
-            © 2022 <a href="/" class="text-muted">My Car Store</a>
-            </div>
-            </div> -->
         </div>
         </div>
     </div>

@@ -2,7 +2,6 @@
     session_start();
 
        // Instruction: require all the files you need here. Tips: (includes/functions.php, includes/class-products.php)
-       require "includes/class-products.php";
        require "includes/functions.php";
 
     // get route
@@ -25,8 +24,14 @@
             case 'product_add': 
                 require "includes/product/product_add.php";
                 break;
+            case 'product_delete': 
+                require "includes/product/product_delete.php";
+                break;
             case 'product_edit': 
                 require "includes/product/product_edit.php";
+                break;
+            case 'cart':
+                require "pages/cart.php";
                 break;
             case 'dashboard': 
                 require "pages/dashboard.php";
@@ -64,6 +69,24 @@
                 break;
             case 'manage-users-edit': 
                 require "pages/users/manage-users-edit.php";
+                break;
+            case "comments/add":
+                require "includes/comments/add.php";
+                break;
+            case "comments/delete":
+                require "includes/comments/delete.php";
+                break;
+            case 'cart_add':
+                require 'includes/cart/cart_add.php';
+                break;
+            case 'cart_remove':
+                require 'includes/cart/cart_remove.php';
+                break;
+            case 'checkout':
+                require 'includes/cart/checkout.php';
+                break;
+            case 'orders':
+                require 'pages/orders.php';
                 break;
             case 'login':
                 require "pages/login.php";

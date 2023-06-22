@@ -19,7 +19,7 @@
     ?>
     <div class="container mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1 class="h1">Manage Users</h1>
+        <h1 class="h1 text-white">Manage Users</h1>
         <div class="text-end">
           <a href="/manage-users-add" class="btn btn-primary btn-sm"
             >Add New User</a
@@ -96,12 +96,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                          <!-- 
-                            Delete Form 
-                            1. add action
-                            2. add method
-                            3. add input hidden field for id
-                          -->
+                          
                           <form method= "POST" action="/user_delete">
                             <input type="hidden" name="id" value= "<?= $user['id']; ?>" />
                             <button type="submit" class="btn btn-danger">Yes</button>
@@ -117,11 +112,11 @@
             <?php endforeach ?>
           </tbody>
         </table>
-      </div>
-      <div class="text-center">
+        <div class="text-center">
         <a href="/dashboard" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back to Dashboard</a
         >
+      </div>
       </div>
     </div>
 
